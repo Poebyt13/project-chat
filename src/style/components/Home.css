@@ -1,0 +1,32 @@
+.Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.Home h1{
+    color: white;
+    font-size: 3rem;
+}
+
+.Home div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
+}
+
+.Home div a{
+    text-decoration: none;
+    color: white;
+    background-color: purple;
+    padding: .5rem 1.7rem;
+}
+
+.Home div a{
+    background-color: white;
+    color: #4070f4;
+    font-weight: 700;
+}
