@@ -6,9 +6,9 @@ function LoginForm({ titolo, funzione}) {
     <div className='LoginForm'>
       <p className='LoginForm__title'>{titolo}</p>
       <form className='LoginForm__box' method='POST' action={funzione}>
-        <input type="text" placeholder='Username' className='LoginForm__input'/>
+        <input type="text" placeholder='Username' className='LoginForm__input' name='user'/>
 
-        <input type="password" placeholder='Password' className='LoginForm__input'/>
+        <input type="password" placeholder='Password' className='LoginForm__input' name='password'/>
 
         <input type="submit" className='LoginForm__button' value={titolo}/>
       </form>

@@ -2,12 +2,12 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import messages from './data/message.js';
+import user from './data/user.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 
 //import users from './data/user.mjs'
-
 //constanti
 const port=process.env.PORT || 9000;
 const app=express();
@@ -18,6 +18,7 @@ const __dirname = path.dirname(__filename);
 
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 //connnessione database cluod
 mongoose.connect(connectionUrl);
 
@@ -37,17 +38,24 @@ db.once('open', () => {
 
 
 
-//post dei messaggi
+app.post("/sign",(req,res)=>{
+    const username=req.body.user;
+    const password=req.body.password;
+    
+    user.create({user,password});
+    
+    console.log(user+"  "+password);
 
-// app.use(express.static(path.join(__dirname,"./dist")));
+});  
 
-// app.get("/Login",(req,res)=>{
-//     res.sendFile(express.static(path.join(__dirname,"./dist")));
-// });
+
+
 
 app.post("/login",(req,res)=>{
+    const username=req.body.user;
+    const password=req.body.password;
 
-    console.log("Hai schiacciato il tasto login");
+    user.find({username,password});
 
  /*   const message=req.body;
     messages.create(message,(err,data)=>{
@@ -60,7 +68,7 @@ app.post("/login",(req,res)=>{
 
     });*/
 
-});  
+}); 
 
 app.listen(port,()=>{
     console.log(`server sta ascoltando porta : ${port}`);
