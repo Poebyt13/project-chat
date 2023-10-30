@@ -5,7 +5,7 @@ import ReturnHome from "../components/ReturnHome";
 function LoginSite() {
     return (
         <div>
-            <LoginForm titolo="Login" funzione="http://localhost:9000/login"/>
+            <LoginForm titolo="Login"/>
             <TextTop text="Sign up" address="SignUp" />
             <ReturnHome/>
         </div>

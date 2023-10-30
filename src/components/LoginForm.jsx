@@ -8,7 +8,6 @@ function LoginForm({ titolo, funzione}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
         fetch('http://localhost:9000/login', {
         method: 'POST',
@@ -36,6 +35,7 @@ function LoginForm({ titolo, funzione}) {
       console.error('Errore:', error);
     }
   };
+  
 
   return (
 

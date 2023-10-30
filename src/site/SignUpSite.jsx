@@ -1,11 +1,11 @@
-import LoginForm from "../components/LoginForm";
+import SignUpForm from "../components/SignUpForm";
 import TextTop from "../components/TextTop";
 import ReturnHome from "../components/ReturnHome";
 
 function SignUpSite() {
     return (
         <div>
-            <LoginForm titolo="Sign up" funzione="http://localhost:9000/sign"/>
+            <SignUpForm titolo="Sign up"/>
             <TextTop text="Login" address="Login"/>
             <ReturnHome/>
         </div>

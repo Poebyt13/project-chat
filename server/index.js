@@ -57,8 +57,7 @@ app.post("/login",(req,res)=>{
     user.findOne({username:username, password:password}).exec()
     .then((user) => {
       if (user) {
-       
-        console.log("il dato trovato" + user);
+        res.status(200).send();
       } else {
         console.log('Il dato non è presente');
         // Puoi gestire il caso in cui il dato non è presente
