@@ -1,12 +1,19 @@
 
 .AddChatContainer{    
-    background-color: #4070f4;
+    background-color: #a7befb;
     margin-top: 0px;
-    width: 35%;
-    height: 20%;
+    width: 100%;
+    height: 10%;
     display: flex;
     justify-content: right;
     align-items: center;
     
 
+}
+
+
+.AddChatContainer svg{
+    width: 20%;
+    height: 50%;
+    
 }
