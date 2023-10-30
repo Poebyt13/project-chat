@@ -1,0 +1,12 @@
+
+.AddChatContainer{    
+    background-color: #4070f4;
+    margin-top: 0px;
+    width: 35%;
+    height: 20%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    
+
+}
