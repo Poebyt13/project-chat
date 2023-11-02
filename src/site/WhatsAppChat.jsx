@@ -1,14 +1,14 @@
 
 import '../style/components/WhatsAppChat.css'
-import ListChat from '../components/ListChat'
-
+import ChatLeft from "../components/ChatLeft/ChatLeft";
+import ChatRight from "../components/ChatRight/ChatRight";
 
 
 function WhatsAppChat() {
     return (
         <div className='WhatsAppChatContainer'>
-        <ListChat/> 
-
+            <ChatLeft/>
+            <ChatRight/>
         </div>
     )
 }

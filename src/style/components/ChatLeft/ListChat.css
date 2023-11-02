@@ -1,5 +1,5 @@
 .ListChatContainer{
-    width: 30%;
-    height: 100vh;
     background-color: rgb(255, 255, 255);
+    height: 90vh;
+    overflow:auto ;
 }

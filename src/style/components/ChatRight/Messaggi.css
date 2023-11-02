@@ -1,0 +1,22 @@
+.Messaggi{
+    background-color: white;
+    padding: .5rem;
+    display: inline;
+    margin-top: 1rem;
+}
+
+ .MessaggiLeft{
+    border-radius: 7px;
+    border-top-left-radius: 0px;
+    margin-left: 1rem;
+    margin-right: 20rem;
+    align-self: start;
+}
+
+.MessaggiRight{
+    border-radius: 7px;
+    border-top-right-radius: 0px;
+    margin-right: 1rem;
+    margin-left: 20rem;
+    align-self: end;
+} 

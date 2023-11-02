@@ -1,0 +1,7 @@
+.ChatLeft{
+    width: 30%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid rgba(31, 50, 73, 0.8);
+}

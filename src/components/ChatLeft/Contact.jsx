@@ -1,9 +1,10 @@
 import React from 'react'
-import '../style/components/Contact.css'
-function Contact() {
+import '../../style/components/ChatLeft/Contact.css'
+
+function Contact({nome_utente}) {
   return (
     <div className='AddContactContainer'>
-        <p>Nome utente</p>
+        <p>{nome_utente}</p>
       
     </div>
   )

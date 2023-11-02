@@ -1,0 +1,12 @@
+.UsernameContainer{
+    width: 100%;
+    background-color: #4070f4;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.UsernameContainer h3{
+    
+    margin-left: 1.5rem;
+}

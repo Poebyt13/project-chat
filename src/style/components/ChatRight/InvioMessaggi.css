@@ -1,0 +1,25 @@
+
+.InvioMessaggi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    gap:1rem;
+}
+
+.InvioMessaggi input, .InvioMessaggi button{
+    height: 4vh;
+    border-radius: 8px;
+    border: 1.75px solid rgb(57, 60, 67);
+    outline: none;
+}
+
+.InvioMessaggi input{
+    width: 60%;
+}
+.InvioMessaggi button{
+    font-weight: 600;
+    background-color: #4070f4;
+    cursor: pointer;
+    width: 30%;
+}
