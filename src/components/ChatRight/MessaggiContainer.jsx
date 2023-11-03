@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../style/components/ChatRight/MessaggiContainer.css";
 import Messaggi from "./Messaggi";
 
-function MessaggiContainer() {
+function MessaggiContainer({messaggiInviati}) {
+
+  const messaggiTotale=messaggiInviati.map((elemento,index)=>{
+   return <Messaggi lato="MessaggiRight" key={index}  messaggio={elemento}/>;
+
+  });
+
   return (
     <div className='MessaggiContainer'>
-      <Messaggi lato="MessaggiLeft"/>
-      <Messaggi lato="MessaggiRight"/>
+      {messaggiTotale}
     </div>
   )
 }
