@@ -21,7 +21,6 @@ function LoginForm({ titolo, funzione}) {
         if (response.ok) {
           // Se la risposta è OK (status 200), reindirizza l'utente verso un'altra pagina
           window.location.href = 'http://localhost:5173/Chat';
-        //window.open("http://localhost:5173/Chat");
         } else {
           // Gestione di altri casi di risposta
           console.log('Errore durante il login');
