@@ -3,12 +3,17 @@
     background-color: #4070f4;
     height: 10vh;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     
 
 }
 
+.AddChatContainer h2{
+    margin-left: 1rem;
+    color: black;
+    text-decoration: underline;
+}
 
 .AddChatContainer svg{
     cursor: pointer;

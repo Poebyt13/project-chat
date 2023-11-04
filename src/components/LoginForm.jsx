@@ -1,7 +1,7 @@
 import '../style/components/LoginForm.css'
 import { useState } from "react";
 
-function LoginForm({ titolo, funzione}) {
+function LoginForm({ titolo }) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ function LoginForm({ titolo, funzione}) {
         body: JSON.stringify({ user: username, password: password }),
       }).then(response=>{
 
-        console.log(response.ok);
+
         if (response.ok) {
           // Se la risposta è OK (status 200), reindirizza l'utente verso un'altra pagina
           window.location.href = 'http://localhost:5173/Chat';

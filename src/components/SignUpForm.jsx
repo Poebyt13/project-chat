@@ -1,7 +1,7 @@
 import '../style/components/LoginForm.css'
 import { useState } from "react";
 
-function LoginForm({ titolo, funzione}) {
+function LoginForm({ titolo }) {
 
  
 

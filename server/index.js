@@ -81,6 +81,28 @@ app.post("/login",(req,res)=>{
 
 }); 
 
+
+app.post("/create-user",(req,res)=>{
+  const username=req.body.user;
+
+  user.findOne({username:username}).exec()
+  .then((user) => {
+    if (user) {
+      res.status(200).send();
+    } else {
+      console.log('Utente non presente');
+      // Puoi gestire il caso in cui il dato non è presente
+    }
+  })
+  .catch(error => {
+    console.error('Errore durante la ricerca:', error);
+    // Gestione degli errori
+  });
+  
+});
+
+
+
 app.listen(port,()=>{
     console.log(`server sta ascoltando porta : ${port}`);
     console.log(__dirname);

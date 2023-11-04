@@ -3,7 +3,7 @@ import "../../style/components/ChatRight/Messaggi.css";
 
 function Messaggi({lato,messaggio}) {
 
-  console.log(lato);
+
   return (
 
     <div className={'Messaggi '+lato}>
