@@ -2,10 +2,13 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import messages from './data/message.js';
+import contact from './data/contact.js'
 import user from './data/user.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from "cors";
+import modelProva from './data/modelProva.js';
+
 
 //import users from './data/user.mjs'
 //constanti
@@ -46,13 +49,15 @@ app.post("/sign",(req,res)=>{
     const password=req.body.password;
 
     user.findOne({username:username}).exec()
-    .then((user) => {
-      if (user) {
+    .then((userfind) => {
+      if (userfind) {
         console.log("Utente esistente/");
+        res.status(404).send()
+        
       } else {
         user.create({username,password});
         console.log(username+"  "+password);
-        
+        res.status(200).send();
       }
     })
     .catch(error => {
@@ -65,6 +70,12 @@ app.post("/sign",(req,res)=>{
   
 
 });  
+
+app.get("/prova-api",(req,res)=>{
+  const variabile="Luis negro";
+  modelProva.create({variabile});
+
+});
 
 
 
@@ -110,6 +121,15 @@ app.post("/create-user",(req,res)=>{
   user.findOne({username:username}).exec()
   .then((user) => {
     if (user) {
+      //aggiunta contatto nel db
+      console.log(contact);
+      console.log(messages);
+
+      console.log(myUsername+"  "+username);
+      contact.create({myUsername,username});
+      
+
+      
       res.status(200).send();
     } else {
       console.log('Utente non presente');
@@ -128,6 +148,10 @@ app.get("/find-user",(req,res)=>{
   console.log("Questo è il mio nome utente"+myUsername)
   res.json({user:myUsername});
 });
+
+app.get("/find-contact",(req,res)=>{
+
+})
 
 
 

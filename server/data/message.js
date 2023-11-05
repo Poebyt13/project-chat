@@ -5,7 +5,7 @@ const message=mongoose.Schema(
         message:String,
         name:String,
         timestamp:String,
-        received:Boolean,
+        side:Boolean,
     }
 );
 

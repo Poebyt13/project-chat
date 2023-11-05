@@ -1,6 +1,7 @@
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import '../../style/components/ChatLeft/AddChat.css'
+
 
 function AddChat({setApriNewUser}) {
   const[myUser,setMyUser]=useState('');
@@ -8,9 +9,8 @@ function AddChat({setApriNewUser}) {
     setApriNewUser(true);
   }
 
-  const ottieniUser= async ()=>{
-  
-   await fetch("http://localhost:9000/find-user",{
+  useEffect(()=>{
+    fetch("http://localhost:9000/find-user",{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -26,11 +26,12 @@ function AddChat({setApriNewUser}) {
       //console.log("Ciao questo è il dato:"+data);
       setMyUser(data.user);
     })
-  }
-
-  ottieniUser();
+  },[]);
+  
 
   
+
+
 
 
   return (
