@@ -15,11 +15,11 @@ import modelProva from './data/modelProva.js';
 
 const port=process.env.PORT || 9000;
 const app=express();
-const connectionUrl="mongodb+srv://almumune13:f9kSi2.uSc2Fm6.@cluster0.a312rcn.mongodb.net/chatDb";
+const connectionUrl="mongodb+srv://almuis:Milano2005@cluster0.cpxvqbc.mongodb.net/";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-var myUsername='';
+var myUsername='';+
 
 
 app.use(cors());
