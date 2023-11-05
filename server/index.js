@@ -16,6 +16,8 @@ const connectionUrl="mongodb+srv://almumune13:f9kSi2.uSc2Fm6.@cluster0.a312rcn.m
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+var myUsername='';
+
 
 app.use(cors());
 app.use(express.json());
@@ -42,8 +44,25 @@ db.once('open', () => {
 app.post("/sign",(req,res)=>{
     const username=req.body.user;
     const password=req.body.password;
-    user.create({username,password});
-    console.log(username+"  "+password);
+
+    user.findOne({username:username}).exec()
+    .then((user) => {
+      if (user) {
+        console.log("Utente esistente/");
+      } else {
+        user.create({username,password});
+        console.log(username+"  "+password);
+        
+      }
+    })
+    .catch(error => {
+      console.error('Errore durante la ricerca:', error);
+      // Gestione degli errori
+    });
+
+
+
+  
 
 });  
 
@@ -57,6 +76,9 @@ app.post("/login",(req,res)=>{
     user.findOne({username:username, password:password}).exec()
     .then((user) => {
       if (user) {
+        console.log("Login effettuato");
+        console.log(user);
+        myUsername=username;
         res.status(200).send();
       } else {
         console.log('Il dato non è presente');
@@ -99,6 +121,23 @@ app.post("/create-user",(req,res)=>{
     // Gestione degli errori
   });
   
+});
+
+
+app.get("/find-user",(req,res)=>{
+  console.log("Questo è il mio nome utente"+myUsername)
+  res.json({user:myUsername});
+});
+
+
+
+app.post("/save-message",(req,res)=>{
+
+});
+
+
+app.post("/get-all-message",(res,req)=>{
+
 });
 
 

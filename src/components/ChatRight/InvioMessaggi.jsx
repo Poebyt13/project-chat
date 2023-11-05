@@ -16,7 +16,7 @@ const inviaMessaggio = () => {
   return (
     <div className='InvioMessaggi'>
       <input type="text"   onChange={(e)=>{setMessaggio(e.target.value)}} />
-      <button onClick={inviaMessaggio} >  Invio</button>
+      <button onClick={inviaMessaggio}  >  Invio</button>
     </div>
   )
 }

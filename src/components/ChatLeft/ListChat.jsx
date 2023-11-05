@@ -11,7 +11,7 @@ function ListChat({ contatti, setApriNewUser }) {
 
     return (
         <div className="ListChatContainer">
-            <Contact nome_utente="mizu" setApriNewUser={setApriNewUser} />
+        
             {
                 ContattiTottali
             }
