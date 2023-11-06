@@ -5,7 +5,7 @@ import MessaggiContainer from "./MessaggiContainer";
 import InvioMessaggi from "./InvioMessaggi";
 import { useState } from 'react'
 
-function ChatRight() {
+function ChatRight({NomeContatto}) {
   const[messaggiInviati,setMessaggiInviati]=useState([]);
 
 
@@ -13,7 +13,7 @@ function ChatRight() {
 
   return (
     <div className='ChatRight'>
-      <Username nome="mizu"/>
+      <Username nome={NomeContatto}/>
       <MessaggiContainer messaggiInviati={messaggiInviati}/>
       <InvioMessaggi  setMessaggiInviati={setMessaggiInviati}/>
     </div>

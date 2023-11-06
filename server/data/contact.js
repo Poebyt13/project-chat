@@ -2,7 +2,7 @@ import mongoose  from "mongoose";
 
 const contact=mongoose.Schema(
     {
-        user:String,
+        myUsername:String,
         contact_name:String
     }
 );

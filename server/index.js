@@ -7,7 +7,6 @@ import user from './data/user.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from "cors";
-import modelProva from './data/modelProva.js';
 
 
 //import users from './data/user.mjs'
@@ -71,14 +70,6 @@ app.post("/sign",(req,res)=>{
 
 });  
 
-app.get("/prova-api",(req,res)=>{
-  const variabile="Luis negro";
-  modelProva.create({variabile});
-
-});
-
-
-
 
 app.post("/login",(req,res)=>{
     const username=req.body.user;
@@ -116,25 +107,37 @@ app.post("/login",(req,res)=>{
 
 
 app.post("/create-user",(req,res)=>{
-  const username=req.body.user;
+  const contact_name=req.body.user;
 
-  user.findOne({username:username}).exec()
+  user.findOne({username:contact_name}).exec()
   .then((user) => {
-    if (user) {
-      //aggiunta contatto nel db
-      console.log(contact);
-      console.log(messages);
 
-      console.log(myUsername+"  "+username);
-      contact.create({myUsername,username});
-      
-
-      
-      res.status(200).send();
-    } else {
+    //ricerca di user non trovato
+    if (user === null) {
       console.log('Utente non presente');
-      // Puoi gestire il caso in cui il dato non è presente
-    }
+      
+      //ricerca di user col mio stesso nome
+    } else if (user.username == myUsername) {
+      console.log("non puoi aggiungere te stesso");
+
+    } else if(user.username != myUsername) {
+      //aggiunta contatto nel db
+
+      //verifico se ce l'ho già come amico o no
+      contact.findOne({myUsername: myUsername, contact_name}).exec()
+      .then(user_contact=>{
+
+        if (user_contact) {
+          console.log("utente già come amico");
+
+        } else {
+          contact.create({myUsername,contact_name});
+        
+          res.status(200).send();
+        }
+      })
+    } 
+
   })
   .catch(error => {
     console.error('Errore durante la ricerca:', error);
@@ -143,14 +146,20 @@ app.post("/create-user",(req,res)=>{
   
 });
 
-
+//per capire il mio user (il mio username con cui mi sono loggato)
 app.get("/find-user",(req,res)=>{
-  console.log("Questo è il mio nome utente"+myUsername)
   res.json({user:myUsername});
 });
 
 app.get("/find-contact",(req,res)=>{
-
+  //cerco tutti i contatti che hanno l'attributo "myUsername" il nome del nostro utente
+  contact.find({myUsername: myUsername}).exec()
+  .then(users=>{
+    res.json(users)
+  })
+  .catch(err=>{
+    console.log("ricerca di contatti errore:" + err);
+  })
 })
 
 
