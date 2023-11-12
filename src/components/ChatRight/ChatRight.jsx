@@ -3,12 +3,9 @@ import "../../style/components/ChatRight/ChatRight.css"
 import Username from "./Username";
 import MessaggiContainer from "./MessaggiContainer";
 import InvioMessaggi from "./InvioMessaggi";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function ChatRight({NomeContatto}) {
-  const[messaggiInviati,setMessaggiInviati]=useState([]);
-
-
+function ChatRight({NomeContatto, messaggiInviati, setMessaggiInviati}) {
 
 
   return (

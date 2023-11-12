@@ -3,9 +3,10 @@ import mongoose from 'mongoose';
 const message=mongoose.Schema(
     {
         message:String,
-        name:String,
+        myUsername:String,
+        myFriendName:String,
         timestamp:String,
-        side:Boolean,
+        by:String,
     }
 );
 

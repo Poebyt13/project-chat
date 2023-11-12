@@ -23,7 +23,6 @@ function AddChat({setApriNewUser}) {
       }
     })
     .then(data=>{
-      //console.log("Ciao questo è il dato:"+data);
       setMyUser(data.user);
     })
   },[]);

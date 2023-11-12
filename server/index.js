@@ -18,8 +18,8 @@ const connectionUrl="mongodb+srv://almuis:Milano2005@cluster0.cpxvqbc.mongodb.ne
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-var myUsername='';+
-
+var myUsername='';
+var myFriendName = '';
 
 app.use(cors());
 app.use(express.json());
@@ -79,7 +79,6 @@ app.post("/login",(req,res)=>{
     .then((user) => {
       if (user) {
         console.log("Login effettuato");
-        console.log(user);
         myUsername=username;
         res.status(200).send();
       } else {
@@ -91,18 +90,6 @@ app.post("/login",(req,res)=>{
       console.error('Errore durante la ricerca:', error);
       // Gestione degli errori
     });
- 
- /*   const message=req.body;
-    messages.create(message,(err,data)=>{
-        if(err){
-            res.statusCode(500).send(err);
-        }
-        else{
-            console.log("DATO RICEVUTO")
-        }
-
-    });*/
-
 }); 
 
 
@@ -162,15 +149,44 @@ app.get("/find-contact",(req,res)=>{
   })
 })
 
+app.post("/find-friend", (req,res)=>{
+  myFriendName = req.body.friend;
+  res.status(200).send();
+})
 
 
 app.post("/save-message",(req,res)=>{
+  const message = req.body.message;
+  const timestamp = req.body.timestamp;
 
+  messages.create({message, myUsername, myFriendName, timestamp, by: myUsername});
+  
+  res.status(200).send();
 });
 
 
-app.post("/get-all-message",(res,req)=>{
+app.get("/get-all-message",(req,res)=>{
+  console.log(`name: ${myUsername} + friend: ${myFriendName}`)
 
+  messages.find({
+    $or: [
+      { myUsername: myUsername, myFriendName: myFriendName, by:myUsername},
+      { myUsername: myFriendName, myFriendName: myUsername, by: myFriendName}
+    ]
+  }).exec()
+  .then(messaggi=>{
+    messaggi.map((element)=>{
+      if (element.by == myUsername) {
+        element.by = "MessaggiRight";
+      } else {
+        element.by = "MessaggiLeft";
+      }
+    })
+    res.json(messaggi)
+  })
+  .catch(err=>{
+    console.log("ricerca di messaggi error: " + err);
+  })
 });
 
 

@@ -2,11 +2,11 @@
 import Contact from "./Contact";
 import '../../style/components/ChatLeft/ListChat.css';
 
-function ListChat({ contatti, setApriNewUser , setNomeContatto}) {
+function ListChat({ contatti, setApriNewUser , setNomeContatto, setMessaggiInviati}) {
 
 
     const ContattiTottali = contatti.map((element, key) => {
-        return <Contact nome_utente={element} key={key} setApriNewUser={setApriNewUser} setNomeContatto={setNomeContatto}/>;
+        return <Contact nome_utente={element} key={key} setApriNewUser={setApriNewUser} setNomeContatto={setNomeContatto} setMessaggiInviati={setMessaggiInviati}/>;
     })
 
     return (

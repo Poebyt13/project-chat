@@ -5,6 +5,12 @@
     margin-top: 1rem;
 }
 
+.Messaggi p:last-child{
+    margin-top: .2rem;
+    font-size: .6rem;
+    color: rgb(133, 133, 133);
+}
+
  .MessaggiLeft{
     border-radius: 7px;
     border-top-left-radius: 0px;
