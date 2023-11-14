@@ -1,37 +1,12 @@
 
-import { useState,useEffect } from 'react';
 import '../../style/components/ChatLeft/AddChat.css'
 
 
-function AddChat({setApriNewUser}) {
-  const[myUser,setMyUser]=useState('');
+function AddChat({setApriNewUser, myUser}) {
+  
   const ChangeState =async ()=>{
     setApriNewUser(true);
   }
-
-  useEffect(()=>{
-    fetch("http://localhost:9000/find-user",{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      
-    })
-    .then(response=>{
-      if(response.ok){
-        return  response.json();
-      }
-    })
-    .then(data=>{
-      setMyUser(data.user);
-    })
-  },[]);
-  
-
-  
-
-
-
 
   return (
     <div className='AddChatContainer' >

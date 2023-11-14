@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../../style/components/ChatRight/InvioMessaggi.css";
 
-function InvioMessaggi({setMessaggiInviati}) {
+function InvioMessaggi({setMessaggiInviati, NomeContatto, myUser}) {
   
 const[messaggio,setMessaggio]=useState('');
 
@@ -19,7 +19,7 @@ const inviaMessaggio = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message: messaggio, timestamp: timestamp}),
+      body: JSON.stringify({myUser: myUser, message: messaggio, timestamp: timestamp, friend: NomeContatto}),
     })  
     .then(res=>{
       if (res.ok) {

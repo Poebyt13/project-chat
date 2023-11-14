@@ -140,7 +140,8 @@ app.get("/find-user",(req,res)=>{
 
 app.get("/find-contact",(req,res)=>{
   //cerco tutti i contatti che hanno l'attributo "myUsername" il nome del nostro utente
-  contact.find({myUsername: myUsername}).exec()
+  const myUser = req.query.myUser;
+  contact.find({myUsername: myUser}).exec()
   .then(users=>{
     res.json(users)
   })
@@ -156,27 +157,31 @@ app.post("/find-friend", (req,res)=>{
 
 
 app.post("/save-message",(req,res)=>{
+  const myUser = req.body.myUser;
   const message = req.body.message;
   const timestamp = req.body.timestamp;
+  const friend = req.body.friend;
 
-  messages.create({message, myUsername, myFriendName, timestamp, by: myUsername});
+  messages.create({message, myUsername: myUser, myFriendName: friend, timestamp, by: myUsername});
   
   res.status(200).send();
 });
 
 
 app.get("/get-all-message",(req,res)=>{
-  console.log(`name: ${myUsername} + friend: ${myFriendName}`)
+  const myUser = req.query.myUser;
+  const friend = req.query.friend;
+  console.log(`name: ${myUser} + friend: ${friend}`)
 
   messages.find({
     $or: [
-      { myUsername: myUsername, myFriendName: myFriendName, by:myUsername},
-      { myUsername: myFriendName, myFriendName: myUsername, by: myFriendName}
+      { myUsername: myUser, myFriendName: friend, by:myUser},
+      { myUsername: friend, myFriendName: myUser, by: friend}
     ]
   }).exec()
   .then(messaggi=>{
     messaggi.map((element)=>{
-      if (element.by == myUsername) {
+      if (element.by == myUser) {
         element.by = "MessaggiRight";
       } else {
         element.by = "MessaggiLeft";

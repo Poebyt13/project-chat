@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../style/components/ChatLeft/Contact.css'
 
-function Contact({nome_utente, setApriNewUser, setNomeContatto, setMessaggiInviati}) {
+function Contact({nome_utente, setApriNewUser, setNomeContatto, setMessaggiInviati, myUser}) {
 
 
   const ChangeState = (e)=>{
@@ -25,7 +25,7 @@ function Contact({nome_utente, setApriNewUser, setNomeContatto, setMessaggiInvia
     })
 
 
-    fetch("http://localhost:9000/get-all-message",{
+    fetch(`http://localhost:9000/get-all-message?myUser=${myUser}&friend=${e.target.outerText}`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
