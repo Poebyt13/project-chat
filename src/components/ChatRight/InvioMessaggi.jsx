@@ -3,7 +3,7 @@ import "../../style/components/ChatRight/InvioMessaggi.css";
 
 function InvioMessaggi({setMessaggiInviati}) {
   
-const[messaggio,setMessaggio]=useState('');
+const[messaggio,setMessaggio]=useState("");
 
 const inviaMessaggio = () => {
 
@@ -12,7 +12,7 @@ const inviaMessaggio = () => {
   const timestamp = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
   if (messaggio.trim() !== '') {
-    setMessaggiInviati(prevMessaggi => [...prevMessaggi, [messaggio, "MessaggiRight"]]);
+    setMessaggiInviati(prevMessaggi => [...prevMessaggi, [messaggio, "MessaggiRight",timestamp]]);
     
     fetch('http://localhost:9000/save-message', {
       method: 'POST',

@@ -5,6 +5,7 @@ import Messaggi from "./Messaggi";
 function MessaggiContainer({messaggiInviati}) {
 
   const messaggiTotale=messaggiInviati.map((elemento,index)=>{
+    console.log(elemento)
     return <Messaggi lato={elemento[1]} key={index}  messaggio={elemento[0]} date={elemento[2]}/>;
   });
 
