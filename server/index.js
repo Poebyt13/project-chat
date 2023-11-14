@@ -12,13 +12,13 @@ import cors from "cors";
 //import users from './data/user.mjs'
 //constanti
 
-const port=process.env.PORT || 9000;
+const port=process.env.PORT || 3000;
 const app=express();
 const connectionUrl="mongodb+srv://almuis:Milano2005@cluster0.cpxvqbc.mongodb.net/";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-var myUsername='';+
+var myUsername='';
 
 
 app.use(cors());
@@ -163,13 +163,18 @@ app.get("/find-contact",(req,res)=>{
 })
 
 
-
 app.post("/save-message",(req,res)=>{
+  
+  const contact_name=req.body.nomeContatto;
+  const timestamp=req.body.ora;
+  const message=req.body.messaggio;
+  console.log(contact_name+" "+timestamp+" "+message);
+
 
 });
 
 
-app.post("/get-all-message",(res,req)=>{
+app.get("/get-all-message",(res,req)=>{
 
 });
 

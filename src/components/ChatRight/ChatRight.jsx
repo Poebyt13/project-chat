@@ -15,7 +15,7 @@ function ChatRight({NomeContatto}) {
     <div className='ChatRight'>
       <Username nome={NomeContatto}/>
       <MessaggiContainer messaggiInviati={messaggiInviati}/>
-      <InvioMessaggi  setMessaggiInviati={setMessaggiInviati}/>
+      <InvioMessaggi  setMessaggiInviati={setMessaggiInviati}  NomeContatto={NomeContatto}/>
     </div>
   )
 }

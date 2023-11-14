@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const message=mongoose.Schema(
     {
         message:String,
-        name:String,
+        myUsername:String,
+        contact_name:String,
         timestamp:String,
         side:Boolean,
     }
